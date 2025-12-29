@@ -55,18 +55,19 @@ class Tanspot_Core_Plugin
     public function register_widgets($widgets_manager)
     {
         // Its is now safe to include Widgets files
-        foreach ($this->tanspot_toolkit_widget_list() as $widget_file_name) {
-            require_once(TANSPOT_TOOLKIT_ELEMENTS_PATH . "/{$widget_file_name}.php");
+        foreach ($this->tanspot_toolkit_ewidget_list() as $ewidgets_name) {
+            require_once(TANSPOT_TOOLKIT_ELEMENTS_PATH . "/{$ewidgets_name}.php");
         }
     }
 
     // List of widgets
 
-    public function tanspot_toolkit_widget_list()
+    public function tanspot_toolkit_ewidget_list()
     {
         return [
 
-            'test',
+            'heading',
+            'banner',
         ];
     }
 

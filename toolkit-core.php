@@ -25,12 +25,8 @@ define('TANSPOT_TOOLKIT_DIR',  dirname(__FILE__));
 define('TANSPOT_TOOLKIT_ELEMENTS_PATH', TANSPOT_TOOLKIT_DIR . '/inc/elementor/widgets');
 
 // inc all files
+ include_once(TANSPOT_TOOLKIT_DIR . '/inc/plugin-helpers.php');
 
-
-
-// include_once(TANSPOT_TOOLKIT_DIR . '/inc/elementor');
-// include_once(TANSPOT_TOOLKIT_URL . '/inc/plugin-functions.php');
-//include_once(TANSPOT_TOOLKIT_DIR . '/inc/elementor/widgets-setup.php');
 
 
 final class Dl_Core
@@ -132,9 +128,9 @@ final class Dl_Core
 
         $message = sprintf(
             /* translators: 1: Plugin name 2: Elementor */
-            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'rently-toolkit'),
-            '<strong>' . esc_html__('Rently Toolkit', 'rently-toolkit') . '</strong>',
-            '<strong>' . esc_html__('Elementor', 'rently-toolkit') . '</strong>'
+            esc_html__('"%1$s" requires "%2$s" to be installed and activated.', 'tanspot-toolkit'),
+            '<strong>' . esc_html__('Tanspot Toolkit', 'tanspot-toolkit') . '</strong>',
+            '<strong>' . esc_html__('Elementor', 'tanspot-toolkit') . '</strong>'
         );
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
@@ -153,9 +149,9 @@ final class Dl_Core
 
         $message = sprintf(
             /* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'rently-toolkit'),
-            '<strong>' . esc_html__('Rently Toolkit', 'rently-toolkit') . '</strong>',
-            '<strong>' . esc_html__('Elementor', 'rently-toolkit') . '</strong>',
+            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'tanspot-toolkit'),
+            '<strong>' . esc_html__('tanspot Toolkit', 'tanspot-toolkit') . '</strong>',
+            '<strong>' . esc_html__('Elementor', 'tanspot-toolkit') . '</strong>',
             self::MINIMUM_ELEMENTOR_VERSION
         );
 
@@ -175,14 +171,16 @@ final class Dl_Core
 
         $message = sprintf(
             /* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'rently-toolkit'),
-            '<strong>' . esc_html__('Rently Toolkit', 'rently-toolkit') . '</strong>',
-            '<strong>' . esc_html__('PHP', 'rently-toolkit') . '</strong>',
+            esc_html__('"%1$s" requires "%2$s" version %3$s or greater.', 'tanspot-toolkit'),
+            '<strong>' . esc_html__('tanspot Toolkit', 'tanspot-toolkit') . '</strong>',
+            '<strong>' . esc_html__('PHP', 'tanspot-toolkit') . '</strong>',
             self::MINIMUM_PHP_VERSION
         );
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
     }
+
+
 }
 
 new Dl_Core();
