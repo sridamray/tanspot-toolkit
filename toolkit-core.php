@@ -25,7 +25,7 @@ define('TANSPOT_TOOLKIT_DIR',  dirname(__FILE__));
 define('TANSPOT_TOOLKIT_ELEMENTS_PATH', TANSPOT_TOOLKIT_DIR . '/inc/elementor/widgets');
 
 // inc all files
- include_once(TANSPOT_TOOLKIT_DIR . '/inc/plugin-helpers.php');
+include_once(TANSPOT_TOOLKIT_DIR . '/inc/plugin-helpers.php');
 
 
 
@@ -53,7 +53,7 @@ final class Dl_Core
      * @since 1.2.0
      * @var string Minimum PHP version required to run the plugin.
      */
-    const MINIMUM_PHP_VERSION = '7.0';
+    const MINIMUM_PHP_VERSION = '7.4';
 
     /**
      * Constructor
@@ -179,8 +179,6 @@ final class Dl_Core
 
         printf('<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message);
     }
-
-
 }
 
 new Dl_Core();
