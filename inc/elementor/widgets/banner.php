@@ -214,6 +214,91 @@ class Tanspot_Hero_Banner extends Widget_Base
             ]
         );
 
+        $this->add_control(
+			'tanspot_hero_review_title',
+			[
+				'label' => esc_html__( 'Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Customer Satisfied', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type here', 'textdomain' ),
+                'label_block' => true,
+			]
+		);
+        $this->add_control(
+			'tanspot_hero_review_subtitle',
+			[
+				'label' => esc_html__( 'Sub Title', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( '4.8 (15k Reviews)', 'textdomain' ),
+				'placeholder' => esc_html__( 'Type here', 'textdomain' ),
+                'label_block' => true,
+			]
+		);
+
+        	$this->add_control(
+			'tanspot_hero_review_image',
+			[
+				'label' => esc_html__( 'Review Image', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => [
+                        [
+                            'name' => 'review_image_title',
+                            'label' => esc_html__( 'Review Image', 'textdomain' ),
+                            'type' => \Elementor\Controls_Manager::TEXT,
+                            'default' => esc_html__( 'Review Image', 'textdomain' ),
+                            'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+                        ],
+                        [
+                        'name' => 'review_image_item',
+                        'label' => esc_html__( 'Review Image', 'textdomain' ),
+                        'type' => \Elementor\Controls_Manager::MEDIA,
+                        'default' => [
+                            'url' => \Elementor\Utils::get_placeholder_image_src(),
+                        ],
+                    ],
+				],
+				'default' => [
+					[
+						'review_image_title' => esc_html__( 'Review Image', 'textdomain' ),
+					],
+				],
+				'title_field' => '{{{ review_image_title }}}',
+			]
+		);
+
+
+
+
+        $this->end_controls_section();
+
+         $this->start_controls_section(
+            'tanspot_hero_thubmanil_wrapper',
+            [
+                'label' => __('Hero Thumbnail', 'tanspot-toolkit'),
+            ]
+        );
+
+        $this->add_control(
+			'tanspot_hero_thubmanil_image',
+			[
+				'label' => esc_html__( 'Thumbnail Image', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [
+					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+            $this->add_control(
+			'tanspot_hero_thubmanil_shap',
+			[
+				'label' => esc_html__( 'Shape', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [
+					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
+			]
+		);
 
 
 
@@ -254,6 +339,14 @@ class Tanspot_Hero_Banner extends Widget_Base
         $tanspot_hero_banner_description = $settings['tanspot_hero_banner_description'];
         $tanspot_hero_banner_btn_text = $settings['tanspot_hero_banner_btn_text'];
         $tanspot_hero_banner_btn_url = $settings['tanspot_hero_banner_btn_url'];
+        $tanspot_hero_review_title = $settings['tanspot_hero_review_title'];
+        $tanspot_hero_review_subtitle = $settings['tanspot_hero_review_subtitle'];
+        $tanspot_hero_review_image = $settings['tanspot_hero_review_image'];
+        $tanspot_hero_thubmanil_image = $settings['tanspot_hero_thubmanil_image'];
+        $tanspot_hero_thubmanil_shap = $settings['tanspot_hero_thubmanil_shap'];
+
+        
+
 ?>
 
 
@@ -263,10 +356,10 @@ class Tanspot_Hero_Banner extends Widget_Base
             <div class="banner-one__pattern"
                 style="background-image: url(<?php echo esc_url($tanspot_hero_banner_bg['url'], 'tanspot-toolkit'); ?>);"></div>
             <div class="banner-one__img" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="0">
-                <img src="assets/images/resources/banner-one-img-1.png" alt="">
+                <img src="<?php echo esc_url($tanspot_hero_thubmanil_image['url']);?>" alt="">
             </div>
             <div class="banner-one__shape-3 float-bob-y">
-                <img src="assets/images/shapes/banner-one-shape-3.png" alt="">
+                <img src="<?php echo esc_url($tanspot_hero_thubmanil_shap['url']);?>" alt="">
             </div>
             <div class="banner-one__line-shpae1"></div>
             <div class="banner-one__line-shpae2"></div>
@@ -286,26 +379,22 @@ class Tanspot_Hero_Banner extends Widget_Base
                             </div>
                             <div class="banner-one__review-box">
                                 <ul class="clearfix">
+                                    <?php foreach($tanspot_hero_review_image as $single_img_item):
+                                        $review_img_url = $single_img_item['review_image_item'];
+
+                                        
+                                        ?>
                                     <li>
                                         <div class="img-box"><img
-                                                src="assets/images/resources/banner-one-review-1-1.jpg" alt="#">
+                                                src="<?php echo esc_url($review_img_url['url']);?>" alt="reveiw-image">
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="img-box"><img
-                                                src="assets/images/resources/banner-one-review-1-2.jpg" alt="#">
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="img-box"><img
-                                                src="assets/images/resources/banner-one-review-1-3.jpg" alt="#">
-                                        </div>
-                                    </li>
+                                    <?php endforeach;?>
                                 </ul>
 
                                 <div class="text-box">
-                                    <h2>Customer Satisfied</h2>
-                                    <p>4.8 (15k Reviews)</p>
+                                    <h2><?php echo esc_html($tanspot_hero_review_title, 'tanspot-toolkit');?></h2>
+                                    <p><?php echo esc_html($tanspot_hero_review_subtitle, 'tanspot-toolkit');?></p>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +414,29 @@ class Tanspot_Hero_Banner extends Widget_Base
         <script>
             jQuery(document).ready(function($) {
 
+                  if ($("[data-aos]").length) {
+                    AOS.init({
+                    duration: '1200',
+                    disable: 'false',
+                    easing: 'ease',
+                    mirror: true
+                    });
+                }
+                // Type Effect
+                if ($('.typed-effect').length) {
+                    $('.typed-effect').each(function () {
+                    var typedStrings = $(this).data('strings');
+                    var typedTag = $(this).attr('id');
+                    var typed = new Typed('#' + typedTag, {
+                        typeSpeed: 100,
+                        backSpeed: 100,
+                        fadeOut: true,
+                        loop: true,
+                        strings: typedStrings.split(',')
+                    });
+                    });
 
+                }
 
             });
         </script>
