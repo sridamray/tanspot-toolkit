@@ -109,7 +109,7 @@ class Tanspot_About_Left extends Widget_Base
         $this->start_controls_section(
             'tanspot_about_left_content',
             [
-                'label' => __('About Left Content', 'tanspot-toolkit'),
+                'label' => __('About Thumbnail Content', 'tanspot-toolkit'),
             ]
         );
 
@@ -123,11 +123,125 @@ class Tanspot_About_Left extends Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'tanspot_about_left_shap1_image',
+            [
+                'label' => esc_html__('Shap 1 Image', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+        $this->add_control(
+            'tanspot_about_left_shap2_image',
+            [
+                'label' => esc_html__('Shap 2 Image', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
 
+        $this->end_controls_section();
 
+        $this->start_controls_section(
+            'tanspot_about_left_review_content',
+            [
+                'label' => __('About Review Content', 'tanspot-toolkit'),
+            ]
+        );
 
+        $this->add_control(
+            'tanspot_about_left_review_gallery',
+            [
+                'label' => esc_html__('Client Gallery', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::GALLERY,
+                'show_label' => false,
+                'default' => [],
+            ]
+        );
 
+        $this->add_control(
+            'tanspot_about_left_review_rating',
+            [
+                'label' => esc_html__('Rating', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => '5',
+                'options' => [
+                    '1' => esc_html__('1 Star', 'textdomain'),
+                    '2'  => esc_html__('2 Star', 'textdomain'),
+                    '3' => esc_html__('3 Star', 'textdomain'),
+                    '4' => esc_html__('4 Star', 'textdomain'),
+                    '5' => esc_html__('5 Star', 'textdomain'),
+                ],
+            ]
+        );
 
+        $this->add_control(
+            'tanspot_about_left_review_text',
+            [
+                'label' => esc_html__('Review Content', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Review Content', 'textdomain'),
+                'placeholder' => esc_html__('Type here', 'textdomain'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'tanspot_about_left_review_experience_text',
+            [
+                'label' => esc_html__('Experience Content', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Experience Content', 'textdomain'),
+                'placeholder' => esc_html__('Type here', 'textdomain'),
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'tanspot_about_left_review_experience_years',
+            [
+                'label' => esc_html__('Experience Years', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('35', 'textdomain'),
+                'placeholder' => esc_html__('Type here', 'textdomain'),
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'tanspot_about_left_review_experience_suffix',
+            [
+                'label' => esc_html__('Experience Suffix', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('+', 'textdomain'),
+                'placeholder' => esc_html__('Type here', 'textdomain'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'tanspot_about_left_review_video_text',
+            [
+                'label' => esc_html__('Video Text', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Watch Video', 'textdomain'),
+                'placeholder' => esc_html__('Type here', 'textdomain'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'tanspot_about_left_review_video_url',
+            [
+                'label' => esc_html__('Video URL', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('https://www.youtube.com/watch?v=Get7rqXYrbQ', 'textdomain'),
+                'placeholder' => esc_html__('Type here', 'textdomain'),
+                'label_block' => true,
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -157,6 +271,16 @@ class Tanspot_About_Left extends Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $tanspot_about_left_thumb_image = $settings['tanspot_about_left_thumb_image']['url'];
+        $tanspot_about_left_review_gallery = $settings['tanspot_about_left_review_gallery'];
+        $tanspot_about_left_review_rating = $settings['tanspot_about_left_review_rating'];
+        $tanspot_about_left_review_text = $settings['tanspot_about_left_review_text'];
+        $tanspot_about_left_review_experience_text = $settings['tanspot_about_left_review_experience_text'];
+        $tanspot_about_left_review_experience_years = $settings['tanspot_about_left_review_experience_years'];
+        $tanspot_about_left_review_video_text = $settings['tanspot_about_left_review_video_text'];
+        $tanspot_about_left_review_video_url = $settings['tanspot_about_left_review_video_url'];
+        $tanspot_about_left_review_experience_suffix = $settings['tanspot_about_left_review_experience_suffix'];
+        $tanspot_about_left_shap1_image = $settings['tanspot_about_left_shap1_image'];
+        $tanspot_about_left_shap2_image = $settings['tanspot_about_left_shap2_image'];
 ?>
 
         <div class="about-one__left wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
@@ -167,55 +291,51 @@ class Tanspot_About_Left extends Widget_Base
                 <div class="about-one__review-and-experience-box">
                     <div class="about-one__review-box">
                         <ul class="list-unstyled about-one__review-list">
-                            <li>
-                                <div class="about-one__review-img">
-                                    <img src="assets/images/resources/about-one-review-img-1-1.jpg"
-                                        alt="">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="about-one__review-img">
-                                    <img src="assets/images/resources/about-one-review-img-1-2.jpg"
-                                        alt="">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="about-one__review-img">
-                                    <img src="assets/images/resources/about-one-review-img-1-3.jpg"
-                                        alt="">
-                                </div>
-                            </li>
-                            <li>
-                                <div class="about-one__review-img">
-                                    <img src="assets/images/resources/about-one-review-img-1-4.jpg"
-                                        alt="">
-                                </div>
-                            </li>
+                            <?php foreach ($tanspot_about_left_review_gallery as $single_about_client_image):
+                            ?>
+                                <li>
+
+                                    <div class="about-one__review-img">
+                                        <img src="<?php echo esc_url($single_about_client_image['url']); ?>"
+                                            alt="">
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+
+
                         </ul>
                         <div class="about-one__review-star">
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
+                            <?php
+                            for ($i = 1; $i <= 5; $i++) {
+
+                                if ($i <= $tanspot_about_left_review_rating) {
+                                    echo '<span class="fas fa-star"></span>';
+                                } else {
+                                    echo '<span class="far fa-star"></span>'; // Optional: empty star for better UI
+                                }
+                            }
+                            ?>
+
+
+
                         </div>
-                        <p class="about-one__review-text">Clients 4.8 (3,567 Reviews)</p>
+                        <p class="about-one__review-text"><?php echo toolkit_kses($tanspot_about_left_review_text, 'tanspot-toolkit'); ?></p>
                     </div>
                     <div class="about-one__experience-box">
                         <div class="about-one__experience-count">
-                            <h3 class="odometer" data-count="35">00</h3>
-                            <span>+</span>
+                            <h3 class="odometer" data-count="<?php echo esc_attr($tanspot_about_left_review_experience_years, 'tanspot-toolkit'); ?>">00</h3>
+                            <span><?php echo esc_html($tanspot_about_left_review_experience_suffix, 'tanspot-toolkit'); ?></span>
                         </div>
-                        <p class="about-one__experience-count-text">Years Of <br> Experience</p>
+                        <p class="about-one__experience-count-text"><?php echo toolkit_kses($tanspot_about_left_review_experience_text, 'tanspot-toolkit'); ?></p>
                     </div>
                     <div class="about-one__video-link">
-                        <a href="https://www.youtube.com/watch?v=Get7rqXYrbQ" class="video-popup">
+                        <a href="<?php echo esc_url($tanspot_about_left_review_video_url); ?>" class="video-popup">
                             <div class="about-one__video-icon">
                                 <span class="fa fa-play"></span>
                                 <i class="ripple"></i>
                             </div>
                         </a>
-                        <h4 class="about-one__video-title">Watch Video</h4>
+                        <h4 class="about-one__video-title"><?php echo esc_html($tanspot_about_left_review_video_text); ?></h4>
                     </div>
                 </div>
                 <div class="about-one__circle-text">
@@ -231,10 +351,10 @@ class Tanspot_About_Left extends Widget_Base
                     </div>
                 </div>
                 <div class="about-one__shape-1">
-                    <img src="assets/images/shapes/about-one-shape-1.png" alt="">
+                    <img src="<?php echo esc_url($tanspot_about_left_shap1_image['url'], 'tanspot-toolkit'); ?>" alt="">
                 </div>
                 <div class="about-one__shape-2">
-                    <img src="assets/images/shapes/about-one-shape-2.png" alt="">
+                    <img src="<?php echo esc_url($tanspot_about_left_shap2_image['url'], 'tanspot-toolkit'); ?>" alt="">
                 </div>
             </div>
         </div>
@@ -242,15 +362,7 @@ class Tanspot_About_Left extends Widget_Base
         <script>
             jQuery(document).ready(function($) {
                 // Curved Circle
-                if ($(".about-one__curved-circle").length) {
-                    $(".about-one__curved-circle").circleType({
-                        position: "absolute",
-                        dir: 1,
-                        radius: 88,
-                        forceHeight: true,
-                        forceWidth: true,
-                    });
-                }
+
 
 
             });
