@@ -312,7 +312,7 @@ class Tanspot_heading_widgets extends Widget_Base
                 'default' => [
                     'top'    => 0,
                     'right'  => 0,
-                    'bottom' => 12,
+                    'bottom' => 0,
                     'left'   => 0,
                 ],
                 'selectors' => [

@@ -245,13 +245,97 @@ class Tanspot_About_Left extends Widget_Base
 
         $this->end_controls_section();
 
+
         $this->start_controls_section(
-            'section_style',
+            'tanspot_about_left_round_content',
             [
-                'label' => __('Style', 'tanspot-toolkit'),
+                'label' => __('About Round Content', 'tanspot-toolkit'),
+            ]
+        );
+
+        $this->add_control(
+            'tanspot_about_left_round_text',
+            [
+                'label' => esc_html__('Title Text', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'rows' => 10,
+                'default' => esc_html__('WELCOME TO OUR COMPANY WORKING Poperly SINCE 2002', 'textdomain'),
+                'placeholder' => esc_html__('Type here', 'textdomain'),
+            ]
+        );
+
+        $this->add_control(
+            'tanspot_about_left_round_url',
+            [
+                'label' => esc_html__('URL', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'options' => ['url', 'is_external', 'nofollow'],
+                'default' => [
+                    'url' => '',
+                    'is_external' => true,
+                    'nofollow' => true,
+                    // 'custom_attributes' => '',
+                ],
+                'label_block' => true,
+            ]
+        );
+
+
+
+
+        $this->end_controls_section();
+
+        // Style section
+
+        $this->start_controls_section(
+            'tanspot_about_left_review_style_section',
+            [
+                'label' => __('Review Area Style', 'tanspot-toolkit'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
+
+        $this->add_control(
+            'tanspot_about_left_review_bg_color',
+            [
+                'label' => esc_html__('Background Color', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .about-one__review-and-experience-box' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tanspot_about_left_review_star_color',
+            [
+                'label' => esc_html__('Star Color', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .about-one__review-star span' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'label' => esc_html__('Review Title', 'textdomain'),
+                'name' => 'tanspot_about_left_review_title_typography',
+                'selector' => '{{WRAPPER}} .about-one__review-text',
+            ]
+        );
+
+        $this->add_control(
+            'tanspot_about_left_review_title_color',
+            [
+                'label' => esc_html__('Review Title Color', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .about-one__review-text' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
 
 
 
@@ -281,6 +365,8 @@ class Tanspot_About_Left extends Widget_Base
         $tanspot_about_left_review_experience_suffix = $settings['tanspot_about_left_review_experience_suffix'];
         $tanspot_about_left_shap1_image = $settings['tanspot_about_left_shap1_image'];
         $tanspot_about_left_shap2_image = $settings['tanspot_about_left_shap2_image'];
+        $tanspot_about_left_round_text = $settings['tanspot_about_left_round_text'];
+        $tanspot_about_left_round_url = $settings['tanspot_about_left_round_url'];
 ?>
 
         <div class="about-one__left wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
@@ -342,11 +428,11 @@ class Tanspot_About_Left extends Widget_Base
                     <div class="about-one__round-text-box">
                         <div class="inner">
                             <div class="about-one__curved-circle rotate-me">
-                                WELCOME TO OUR COMPANY WORKING Poperly SINCE 2002
+                                <?php echo esc_html($tanspot_about_left_round_text, 'tanspot-toolkit'); ?>
                             </div>
                         </div>
                         <div class="overlay-icon-box">
-                            <a href="about.html"><i class="icon-plane"></i></a>
+                            <a href="<?php echo esc_url($tanspot_about_left_round_url['url']); ?>"><i class="icon-plane"></i></a>
                         </div>
                     </div>
                 </div>

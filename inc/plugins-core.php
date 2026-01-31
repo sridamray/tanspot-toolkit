@@ -71,6 +71,9 @@ class Tanspot_Core_Plugin
             'slider',
             'icon-box',
             'about-left',
+            'list-item',
+            'button',
+            'author-info',
         ];
     }
 
