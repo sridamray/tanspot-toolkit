@@ -26,6 +26,7 @@ define('TANSPOT_TOOLKIT_ELEMENTS_PATH', TANSPOT_TOOLKIT_DIR . '/inc/elementor/wi
 
 // inc all files
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/plugin-helpers.php');
+include_once(TANSPOT_TOOLKIT_DIR . '/inc/custom-post-service.php');
 
 
 
