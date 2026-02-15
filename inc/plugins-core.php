@@ -77,6 +77,9 @@ class Tanspot_Core_Plugin
             'text-slider',
             'service-slider',
             'our-skill',
+            'service-image-box',
+            'faqs',
+            'sidebar-service-item',
         ];
     }
 
