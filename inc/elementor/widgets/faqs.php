@@ -113,6 +113,47 @@ class Tanspot_Faqs extends Widget_Base
             ]
         );
 
+        $this->add_control(
+            'tanspot_faqs_repeater',
+            [
+                'label' => esc_html__('Faqs List', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => [
+                    [
+                        'name' => 'tanspot_faqs_title',
+                        'label' => esc_html__('Title', 'textdomain'),
+                        'type' => \Elementor\Controls_Manager::TEXT,
+                        'default' => esc_html__('How do you handle returns or exchanges?', 'textdomain'),
+                        'label_block' => true,
+                    ],
+                    [
+                        'name' => 'tanspot_faqs_description',
+                        'label' => esc_html__('Content', 'textdomain'),
+                        'type' => \Elementor\Controls_Manager::TEXTAREA,
+                        'default' => esc_html__('Description', 'textdomain'),
+                        'label_block' => true,
+                    ],
+                ],
+                'default' => [
+                    [
+                        'tanspot_faqs_title' => esc_html__('How do you handle returns or exchanges?', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_faqs_title' => esc_html__('What does business consulting do?', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_faqs_title' => esc_html__('Can I cancel a shipment after its been booked?', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_faqs_title' => esc_html__('Can you assist with customs clearance procedures?', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_faqs_title' => esc_html__('What is your delivery policy?', 'textdomain'),
+                    ],
+                ],
+                'title_field' => '{{{ tanspot_faqs_title }}}',
+            ]
+        );
 
 
 
@@ -143,85 +184,40 @@ class Tanspot_Faqs extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $tanspot_faqs_repeater = $settings['tanspot_faqs_repeater'];
 ?>
 
         <div class="faq-page__single">
             <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
-                <div class="accrodion wow fadeInLeft" data-wow-delay="0ms"
-                    data-wow-duration="1500ms">
-                    <div class="accrodion-title">
-                        <h4>How do you handle returns or exchanges?</h4>
+
+                <?php
+                $i = 0;
+                foreach ($tanspot_faqs_repeater as $single_faq_item):
+                    $i++;
+
+                    $animation_class = ($i % 2 == 1) ? 'fadeInLeft' : 'fadeInRight';
+                    $delay = ($i - 1) * 100;
+                    $active_class = ($i == 2) ? 'active' : '';
+
+
+
+                ?>
+                    <div class="accrodion wow  <?php echo esc_attr($active_class, 'tanspot-toolkit'); ?> <?php echo esc_attr($animation_class, 'tanspot-toolkit'); ?>" data-wow-delay="<?php echo esc_attr($delay, 'tanspot-toolkit'); ?>ms"
+                        data-wow-duration="1500ms">
+                        <div class="accrodion-title">
+                            <h4><?php echo esc_html($single_faq_item['tanspot_faqs_title'], 'tanspot-toolkit'); ?></h4>
+                        </div>
+                        <div class="accrodion-content">
+                            <div class="inner">
+                                <p><?php echo esc_html($single_faq_item['tanspot_faqs_description'], 'tanspot-toolkit'); ?>
+                                </p>
+                            </div><!-- /.inner -->
+                        </div>
                     </div>
-                    <div class="accrodion-content">
-                        <div class="inner">
-                            <p>We help businesses bring ideas to life in the digital world designing
-                                &
-                                implementing the technology tools that they need to win. We help
-                                business bring ideas to life in the digital wor
-                            </p>
-                        </div><!-- /.inner -->
-                    </div>
-                </div>
-                <div class="accrodion active wow fadeInRight" data-wow-delay="100ms"
-                    data-wow-duration="1500ms">
-                    <div class="accrodion-title">
-                        <h4>What does business consulting do?</h4>
-                    </div>
-                    <div class="accrodion-content">
-                        <div class="inner">
-                            <p>We help businesses bring ideas to life in the digital world designing
-                                &
-                                implementing the technology tools that they need to win. We help
-                                business bring ideas to life in the digital wor
-                            </p>
-                        </div><!-- /.inner -->
-                    </div>
-                </div>
-                <div class="accrodion wow fadeInLeft" data-wow-delay="200ms"
-                    data-wow-duration="1500ms">
-                    <div class="accrodion-title">
-                        <h4>Can I cancel a shipment after it's been booked?</h4>
-                    </div>
-                    <div class="accrodion-content">
-                        <div class="inner">
-                            <p>We help businesses bring ideas to life in the digital world designing
-                                &
-                                implementing the technology tools that they need to win. We help
-                                business bring ideas to life in the digital wor
-                            </p>
-                        </div><!-- /.inner -->
-                    </div>
-                </div>
-                <div class="accrodion wow fadeInRight" data-wow-delay="300ms"
-                    data-wow-duration="1500ms">
-                    <div class="accrodion-title">
-                        <h4>Can you assist with customs clearance procedures?</h4>
-                    </div>
-                    <div class="accrodion-content">
-                        <div class="inner">
-                            <p>We help businesses bring ideas to life in the digital world designing
-                                &
-                                implementing the technology tools that they need to win. We help
-                                business bring ideas to life in the digital wor
-                            </p>
-                        </div><!-- /.inner -->
-                    </div>
-                </div>
-                <div class="accrodion wow fadeInLeft" data-wow-delay="400ms"
-                    data-wow-duration="1500ms">
-                    <div class="accrodion-title">
-                        <h4>What is your delivery policy?</h4>
-                    </div>
-                    <div class="accrodion-content">
-                        <div class="inner">
-                            <p>We help businesses bring ideas to life in the digital world designing
-                                &
-                                implementing the technology tools that they need to win. We help
-                                business bring ideas to life in the digital wor
-                            </p>
-                        </div><!-- /.inner -->
-                    </div>
-                </div>
+
+                <?php endforeach; ?>
+
+
             </div>
         </div>
 

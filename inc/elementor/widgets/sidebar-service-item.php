@@ -114,6 +114,69 @@ class Tanspot_Sidebar_Service_Item extends Widget_Base
         );
 
 
+        $this->add_control(
+            'tanspot_service_sidebar_title',
+            [
+                'label' => esc_html__('Title', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Our Services', 'textdomain'),
+                'placeholder' => esc_html__('Type  here', 'textdomain'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'tanspot_service_sidebar_repeator',
+            [
+                'label' => esc_html__('Service List', 'textdomain'),
+                'type' => \Elementor\Controls_Manager::REPEATER,
+                'fields' => [
+                    [
+                        'name' => 'tanspot_service_list_title',
+                        'label' => esc_html__('Title', 'textdomain'),
+                        'type' => \Elementor\Controls_Manager::TEXT,
+                        'default' => esc_html__('International Transport', 'textdomain'),
+                        'label_block' => true,
+                    ],
+                    [
+                        'name' => 'tanspot_service_list_url',
+                        'label' => esc_html__('Service URL', 'textdomain'),
+                        'type' => \Elementor\Controls_Manager::URL,
+                        'options' => ['url', 'is_external', 'nofollow'],
+                        'default' => [
+                            'url' => '',
+                            'is_external' => true,
+                            'nofollow' => true,
+                            // 'custom_attributes' => '',
+                        ],
+                        'label_block' => true,
+                    ]
+                ],
+                'default' => [
+                    [
+                        'tanspot_service_list_title' => esc_html__('International Transport', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_service_list_title' => esc_html__('Local Track Transport', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_service_list_title' => esc_html__('Fast Personal Delivery', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_service_list_title' => esc_html__('Safe Ocean Transport', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_service_list_title' => esc_html__('Warehouse Facility', 'textdomain'),
+                    ],
+                    [
+                        'tanspot_service_list_title' => esc_html__('Emergency Transport', 'textdomain'),
+                    ],
+                ],
+                'title_field' => '{{{ tanspot_service_list_title }}}',
+            ]
+        );
+
+
 
 
 
@@ -144,38 +207,49 @@ class Tanspot_Sidebar_Service_Item extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+        $tanspot_service_sidebar_title = $settings['tanspot_service_sidebar_title'];
+        $tanspot_service_sidebar_repeator = $settings['tanspot_service_sidebar_repeator'];
 ?>
 
 
 
         <div class="service-details__services-box">
-            <h3 class="service-details__services-title">Our Services</h3>
+            <h3 class="service-details__services-title"><?php echo esc_html($tanspot_service_sidebar_title, 'tanspot-toolkit'); ?></h3>
             <ul class="service-details__services-list list-unstyled">
-                <li>
-                    <a href="international-transport.html">International Transport<span
-                            class="icon-next"></span></a>
-                </li>
-                <li>
-                    <a href="track-transport.html">Local Track Transport<span
-                            class="icon-next"></span></a>
-                </li>
-                <li>
-                    <a href="personal-delivery.html">Fast Personal Delivery<span
-                            class="icon-next"></span></a>
-                </li>
-                <li class="active">
-                    <a href="ocean-transport.html">Safe Ocean Transport<span
-                            class="icon-next"></span></a>
-                </li>
-                <li>
-                    <a href="warehouse-facility.html">Warehouse Facility<span
-                            class="icon-next"></span></a>
-                </li>
-                <li>
-                    <a href="emergency-transport.html">Emergency Transport<span
-                            class="icon-next"></span></a>
-                </li>
+
+                <?php
+                // Current browser URL
+                $current_url = home_url(add_query_arg([], $_SERVER['REQUEST_URI']));
+                $index = 0;
+
+                foreach ($tanspot_service_sidebar_repeator as $single_servcie_item):
+
+                    $servcie_url = $single_servcie_item['tanspot_service_list_url'];
+                    $item_url = esc_url($servcie_url['url']);
+
+                    // যদি current URL match করে → active
+                    if ($current_url == $item_url) {
+                        $active_class = 'active';
+                    } else {
+                        $active_class = '';
+                    }
+                ?>
+
+                    <li class="<?php echo esc_attr($active_class); ?>">
+                        <a href="<?php echo $item_url; ?>">
+                            <?php echo esc_html($single_servcie_item['tanspot_service_list_title']); ?>
+                            <span class="icon-next"></span>
+                        </a>
+                    </li>
+
+                <?php
+                    $index++;
+                endforeach;
+                ?>
+
             </ul>
+
+
         </div>
 
 

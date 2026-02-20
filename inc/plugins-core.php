@@ -80,6 +80,9 @@ class Tanspot_Core_Plugin
             'service-image-box',
             'faqs',
             'sidebar-service-item',
+            'service-contact-box',
+            'project',
+            'project-info',
         ];
     }
 
