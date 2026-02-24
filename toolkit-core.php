@@ -28,6 +28,9 @@ define('TANSPOT_TOOLKIT_ELEMENTS_PATH', TANSPOT_TOOLKIT_DIR . '/inc/elementor/wi
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/plugin-helpers.php');
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/custom-post-service.php');
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/custom-post-project.php');
+include_once(TANSPOT_TOOLKIT_DIR . '/inc/custom-post-team.php');
+include_once(TANSPOT_TOOLKIT_DIR . '/libs/codestar-framework/codestar-framework.php');
+include_once(TANSPOT_TOOLKIT_DIR . '/inc/common/csf-meta/csf-team-meta.php');
 
 
 
