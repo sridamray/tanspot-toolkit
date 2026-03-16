@@ -24,13 +24,25 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
 define('TANSPOT_TOOLKIT_DIR',  dirname(__FILE__));
 define('TANSPOT_TOOLKIT_ELEMENTS_PATH', TANSPOT_TOOLKIT_DIR . '/inc/elementor/widgets');
 
+
 // inc all files
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/plugin-helpers.php');
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/custom-post-service.php');
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/custom-post-project.php');
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/custom-post-team.php');
 include_once(TANSPOT_TOOLKIT_DIR . '/libs/codestar-framework/codestar-framework.php');
+include_once(TANSPOT_TOOLKIT_DIR . '/libs/advanced-custom-fields-pro/acf.php');
 include_once(TANSPOT_TOOLKIT_DIR . '/inc/common/csf-meta/csf-team-meta.php');
+
+
+function tanspot_toolkit_load_textdomain()
+{
+
+
+    include_once(TANSPOT_TOOLKIT_DIR . '/inc/common/csf-meta/acf-page-meta.php');
+}
+add_action('init', 'tanspot_toolkit_load_textdomain');
+
 
 
 

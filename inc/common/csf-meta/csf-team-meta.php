@@ -81,6 +81,136 @@ if (class_exists('CSF')) {
 
         )
     ));
+    // Team Practice Info
+    CSF::createSection($prefix, array(
+        'title'  => 'Team Practice',
+        'fields' => array(
+
+            //
+            // A text field
+            array(
+                'id'    => 'team_practice_title',
+                'type'  => 'text',
+                'title' => esc_html__('Practice Title', 'tanspot-toolkit'),
+                'default' => esc_html__('Practice Area', 'tanspot-toolkit'),
+            ),
+
+            array(
+                'id'     => 'team_practice_left_lists',
+                'type'   => 'repeater',
+                'title'  => 'Practice List Left',
+                'fields' => array(
+
+                    array(
+                        'id'    => 'left_list_item',
+                        'type'  => 'text',
+                        'title' =>  esc_html__('Practice Item', 'tanspot-toolkit'),
+                        'default' => esc_html__('Ocean Freight', 'tanspot-toolkit'),
+                    ),
+
+                ),
+                'default'   => array(
+                    array(
+                        'left_list_item' => esc_html__('Ocean Freight', 'tanspot-toolkit')
+                    ),
+                    array(
+                        'left_list_item' => esc_html__('Road Freight', 'tanspot-toolkit')
+                    ),
+                    array(
+                        'left_list_item' => esc_html__('Fast Personal Delivery', 'tanspot-toolkit')
+                    ),
+                )
+            ),
+            array(
+                'id'     => 'team_practice_right_lists',
+                'type'   => 'repeater',
+                'title'  => 'Practice List Right',
+                'fields' => array(
+
+                    array(
+                        'id'    => 'right_list_item',
+                        'type'  => 'text',
+                        'title' =>  esc_html__('Practice Item', 'tanspot-toolkit'),
+                        'default' => esc_html__('International Shipping', 'tanspot-toolkit'),
+                    ),
+
+                ),
+                'default'   => array(
+                    array(
+                        'right_list_item' => esc_html__('International Shipping', 'tanspot-toolkit')
+                    ),
+                    array(
+                        'right_list_item' => esc_html__('Rail Freight', 'tanspot-toolkit')
+                    ),
+                    array(
+                        'right_list_item' => esc_html__('Local Truck Transport', 'tanspot-toolkit')
+                    ),
+                )
+            ),
+
+
+
+
+        )
+    ));
+    // Team Skill
+    CSF::createSection($prefix, array(
+        'title'  => 'Team Skill',
+        'fields' => array(
+
+            //
+            // A text field
+            array(
+                'id'    => 'team_skill_title',
+                'type'  => 'text',
+                'title' => esc_html__('Skill Title', 'tanspot-toolkit'),
+                'default' => esc_html__('Skills', 'tanspot-toolkit'),
+            ),
+
+            array(
+                'id'     => 'team_skill_repeater',
+                'type'   => 'repeater',
+                'title'  => 'Skill List',
+                'fields' => array(
+
+                    array(
+                        'id'    => 'skill_item_title',
+                        'type'  => 'text',
+                        'title' =>  esc_html__('Skill Title', 'tanspot-toolkit'),
+                        'default' => esc_html__('Product Delivery', 'tanspot-toolkit'),
+                    ),
+                    array(
+                        'id'    => 'skill_item_percentage',
+                        'type'  => 'text',
+                        'title' =>  esc_html__('Skill Percentage', 'tanspot-toolkit'),
+                        'default' => esc_html__('85%', 'tanspot-toolkit'),
+                    ),
+
+                ),
+                'default'   => array(
+                    array(
+                        'skill_item_title' => esc_html__('Product Delivery', 'tanspot-toolkit'),
+                        'skill_item_percentage' => esc_html__('85%', 'tanspot-toolkit')
+                    ),
+                    array(
+                        'skill_item_title' => esc_html__('Quick Response', 'tanspot-toolkit'),
+                        'skill_item_percentage' => esc_html__('95%', 'tanspot-toolkit')
+                    ),
+                    array(
+                        'skill_item_title' => esc_html__('Customer Satisfaction', 'tanspot-toolkit'),
+                        'skill_item_percentage' => esc_html__('65%', 'tanspot-toolkit')
+                    ),
+                )
+            ),
+
+
+
+
+
+        )
+    ));
+
+
     // Team Social
     CSF::createSection($prefix, array(
         'title'  => 'Team Social',
